@@ -4,10 +4,19 @@ const router = express.Router();
 
 module.exports = function(){
     router.get('/',(req,res)=>{
-        res.send('Inicio')
+        res.render('index',{
+            pagina: 'Agencia de Viajes'
+        })
     })
     router.get('/nosotros',(req,res)=>{
-        res.send('nosotros')
+        res.render('nosotros', {
+            pagina:'Sobre Nosotros'
+        })
+    })
+    router.get('/viajes',(req,res)=>{
+        res.render('viajes', {
+            pagina:'Próximos Viajes'
+        })
     })
     return router;
 }
