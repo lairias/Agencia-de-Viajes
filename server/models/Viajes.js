@@ -23,7 +23,7 @@ const Viaje = db.define('viaje',{
         type:Sequelize.STRING
     },
     disponibles:{
-        type:Sequelize.fa-strikethrough
+        type:Sequelize.STRING
     }
 
 })

@@ -1,7 +1,7 @@
 //----------------------Intance seccion
 const express = require('express');
 const path = require('path');
-
+const bodyParser = require('body-parser')
 //----------------------Variable Import Section 
 const Routes = require('./routes');
 
@@ -27,6 +27,7 @@ app.use((req,res,next)=>{
 
 //----------------------Section the Routes or Middleware
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use('/',Routes())
 
 
