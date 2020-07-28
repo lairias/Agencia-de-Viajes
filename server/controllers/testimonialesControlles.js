@@ -1,15 +1,15 @@
 
 const Testimonial = require("../models/Testimoniales");
 
-exports.InfoTestimoniales = (req, res) => {
-        Testimonial.findAll().then((testimoniales) =>
-            res.render("testimoniales", {
-                pagina: "Los testimoniales",
-                testimoniales,
-            })
-        )}
+exports.InfoTestimoniales = async  (req, res) => {
+       const testimoniales = await Testimonial.findAll()
+       res.render("testimoniales", {
+         pagina: "Los testimoniales",
+         testimoniales,
+       });
+       }
 
-exports.PostTestimoniales = (req, res) => {
+exports.PostTestimoniales = async  (req, res) => {
   let { nombre, correo, mensaje } = req.body;
   let errores = [];
   if (!nombre) {
@@ -22,11 +22,14 @@ exports.PostTestimoniales = (req, res) => {
     errores.push({ mensaje: "Agregar tu correo" });
   }
   if (errores.length > 0) {
+    const testimoniales = await Testimonial.findAll()
     res.render("testimoniales", {
       nombre,
       correo,
       mensaje,
       errores,
+      pagina:'Testimoniales',
+      testimoniales
     });
   } else {
     //almacenamos en la base de datos
