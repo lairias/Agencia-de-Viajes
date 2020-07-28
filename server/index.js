@@ -20,6 +20,7 @@ app.set('views', path.join(__dirname,'./views'))
 //send variables to pug engine 
 app.use((req,res,next)=>{
     res.locals.fechaActual = new Date().getFullYear();
+    res.locals.Destacando = req.path;
     // console.log(res.locals);
     return next();
 })
