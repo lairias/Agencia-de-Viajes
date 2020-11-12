@@ -26,7 +26,7 @@ app.use((req,res,next)=>{
 //**************************************** */
 
 //----------------------Section the Routes or Middleware
-app.use(express.static(dirname__ +'/public'))
+app.use('/static',express.static(dirname__ +'/public'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use('/',Routes())
 
